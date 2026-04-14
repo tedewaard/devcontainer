@@ -1,0 +1,16 @@
+FROM ubuntu:24.04
+
+# Install neovim and dependencies
+RUN apt-get update && apt-get install -y \
+    neovim \
+    git \
+    curl \
+    ripgrep \
+    fd-find \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy your config into the image
+COPY ./nvim /root/.config/nvim
+
+WORKDIR /workspace
+ENTRYPOINT ["bash"]

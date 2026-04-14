@@ -1,0 +1,11 @@
+--2026-03-03 20:32:56--  https://adoptium.net/download?link=https%3A%2F%2Fgithub.com%2Fadoptium%2Ftemurin25-binaries%2Freleases%2Fdownload%2Fjdk-25.0.2%252B10%2FOpenJDK25U-jdk_x64_linux_hotspot_25.0.2_10.tar.gz
+Resolving adoptium.net (adoptium.net)... 104.18.20.66, 104.18.21.66, 2606:4700::6812:1442, ...
+Connecting to adoptium.net (adoptium.net)|104.18.20.66|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘download?link=https:%2F%2Fgithub.com%2Fadoptium%2Ftemurin25-binaries%2Freleases%2Fdownload%2Fjdk-25.0.2%2B10%2FOpenJDK25U-jdk_x64_linux_hotspot_25.0.2_10.tar.gz’
+
+               download?link=     [<=>                                            ]       0  --.-KB/s               download?link=https:%2F%2Fgit     [ <=>                                           ]  98.33K  --.-KB/s    in 0.03s   
+
+2026-03-03 20:32:57 (3.11 MB/s) - ‘download?link=https:%2F%2Fgithub.com%2Fadoptium%2Ftemurin25-binaries%2Freleases%2Fdownload%2Fjdk-25.0.2%2B10%2FOpenJDK25U-jdk_x64_linux_hotspot_25.0.2_10.tar.gz’ saved [100691]
+

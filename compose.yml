@@ -1,0 +1,62 @@
+# compose.yml - Defines how to run your dev container
+#
+# Usage:
+#   docker compose up -d        # Start the container in the background
+#   docker compose exec dev bash # Attach a shell to it
+#   docker compose down          # Stop and remove the container
+#
+# The container stays running in the background. You can attach/detach
+# as many times as you want without losing state (installed packages,
+# running processes, etc.). It only resets when you 'down' and 'up' again.
+
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      network: host
+    container_name: devbox
+    network_mode: host
+
+    # Keep the container running even though there's no long-lived process.
+    # 'stdin_open' = docker run -i (keep STDIN open)
+    # 'tty' = docker run -t (allocate a pseudo-TTY)
+    # Together they keep bash alive so the container doesn't exit immediately.
+    stdin_open: true
+    tty: true
+
+    # --- Volume Mounts ---
+    # Volumes "attach" directories from your host into the container.
+    # Format: /path/on/host:/path/in/container
+    #
+    # Your neovim config - mounted so edits on host are reflected live
+    # Update the left side to match where your nvim config lives:
+    #   Linux:   ~/.config/nvim
+    #   Windows: C:\Users\YourName\AppData\Local\nvim  (or use WSL path)
+    volumes:
+      - ~/.config/nvim:/home/dev/.config/nvim
+
+      # Your projects directory - this is where you'll work
+      # Mount as many directories as you need. Examples:
+      - ~/projects:/home/dev/workspace
+
+      # Git config so commits inside the container have your name/email
+      - ~/.gitconfig:/home/dev/.gitconfig:ro
+
+      # SSH keys so you can git clone private repos from inside the container
+      # :ro = read-only (container can use but not modify your keys)
+      - ~/.ssh:/home/dev/.ssh:ro
+
+    # --- Environment Variables ---
+    # These get set inside the container
+    environment:
+      # Tells neovim and other tools what kind of terminal you're using
+      - TERM=xterm-256color
+
+    # --- Resource Limits (optional, uncomment if you want guardrails) ---
+    # Prevents a runaway AI agent from eating all your RAM/CPU
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: "4"
+    #       memory: 8G
