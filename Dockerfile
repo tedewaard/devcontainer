@@ -25,10 +25,16 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     cmake \
     python3 \
+    python3-pip \
+    python3-venv \
     nodejs \
     npm \
     openssh-client \
     xclip \
+    tmux \
+    fzf \
+    jq \
+    ansible \
     && rm -rf /var/lib/apt/lists/*
 
 RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz \
